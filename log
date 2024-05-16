@@ -69,3 +69,28 @@ Thu 16 May 2024 07:21:46 PM UTC:
  tests:  1|4
 total_score: 10/70
 4521d8f
+Thu 16 May 2024 08:02:21 PM UTC: 
+ sudoku.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:140:7: error: value computed is not used [-Werror=unused-value]
+  140 |       *cont++;
+      |       ^~~~~~~
+sudoku.c:152:29: error: expected ‘)’ before ‘;’ token
+  152 |          push(s, popFront(l);)
+      |              ~              ^
+      |                             )
+sudoku.c:152:18: error: invalid use of void expression
+  152 |          push(s, popFront(l);)
+      |                  ^~~~~~~~~~~
+sudoku.c:152:31: error: expected ‘;’ before ‘}’ token
+  152 |          push(s, popFront(l);)
+      |                               ^
+      |                               ;
+  153 | 
+  154 |       }
+      |       ~                        
+cc1: all warnings being treated as errors
+Compilation failed
+af4c8cf

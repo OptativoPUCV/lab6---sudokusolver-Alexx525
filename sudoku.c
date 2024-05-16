@@ -112,7 +112,6 @@ List* get_adj_nodes(Node* n)
             }
          }
       }
-   
    return list;
 }
 
@@ -132,6 +131,28 @@ int is_final(Node* n)
 
 Node* DFS(Node* initial, int* cont)
 {
+   Stack* s = createStack();
+   List* l = createList();
+   push(s, initial);
+
+   while (!is_empty(s))
+   {
+      *cont++;
+      Node* n = top(s);
+      
+      pop(s);
+      
+      if (is_final(n))
+         return n;
+      
+      l = get_adj_nodes(n);
+
+      while (!is_empty(l))
+      {
+         push(s, popFront(l);)
+         
+      }
+   }
    
    return NULL;
 }
