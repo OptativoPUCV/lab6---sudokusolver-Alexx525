@@ -36,3 +36,24 @@ sudoku.c:83:27: error: comparison between pointer and integer [-Werror]
 cc1: all warnings being treated as errors
 Compilation failed
 ec9483f
+Thu 16 May 2024 06:27:57 PM UTC: 
+ sudoku.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:56:7: error: unknown type name ‘node’; did you mean ‘Node’?
+   56 |       node* aux = _createNode(k);
+      |       ^~~~
+      |       Node
+sudoku.c:56:19: error: implicit declaration of function ‘_createNode’; did you mean ‘createNode’? [-Werror=implicit-function-declaration]
+   56 |       node* aux = _createNode(k);
+      |                   ^~~~~~~~~~~
+      |                   createNode
+sudoku.c:56:19: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+sudoku.c:67:13: error: ‘aux’ undeclared (first use in this function)
+   67 |             aux = front(l);
+      |             ^~~
+sudoku.c:67:13: note: each undeclared identifier is reported only once for each function it appears in
+cc1: all warnings being treated as errors
+Compilation failed
+065437c

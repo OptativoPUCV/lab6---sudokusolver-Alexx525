@@ -53,7 +53,7 @@ int is_valid(Node* n)
 
    for (int k = 1; k <= 9; k++)
    {
-      int* aux = _createNode(k);
+      node* aux = _createNode(k);
       pushBack(l, aux);
    }
    
@@ -64,27 +64,27 @@ int is_valid(Node* n)
       {
          if (n->sudo[i][j] != 0)
          {
-            int* aux = front(l);
+            aux = front(l);
             
             while (aux != NULL)
             {
-               if (aux == n->sudo[i][j])
+               if (aux->data == n->sudo[i][j])
                   return 0;
                aux = next(l);
             }
          }
 
          if (n->sudo[j][i] != 0)
-            {
-               int* aux = front(l);
+         {
+            aux = front(l);
 
-               while (aux != NULL)
-               {
-                  if (aux == n->sudo[i][j])
-                     return 0;
-                  aux = next(l);
-               }
+            while (aux != NULL)
+            {
+               if (aux->data == n->sudo[j][i])
+                  return 0;
+               aux = next(l);
             }
+         }
       }
    
    return 1;
