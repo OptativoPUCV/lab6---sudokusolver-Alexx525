@@ -17,3 +17,22 @@ sudoku.c:83:27: error: comparison between pointer and integer [-Werror]
 cc1: all warnings being treated as errors
 Compilation failed
 45c0919
+Thu 16 May 2024 05:18:42 AM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:56:18: error: implicit declaration of function ‘_createNode’; did you mean ‘createNode’? [-Werror=implicit-function-declaration]
+   56 |       int* aux = _createNode(k);
+      |                  ^~~~~~~~~~~
+      |                  createNode
+sudoku.c:56:18: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+sudoku.c:71:24: error: comparison between pointer and integer [-Werror]
+   71 |                if (aux == n->sudo[i][j])
+      |                        ^~
+sudoku.c:83:27: error: comparison between pointer and integer [-Werror]
+   83 |                   if (aux == n->sudo[i][j])
+      |                           ^~
+cc1: all warnings being treated as errors
+Compilation failed
+ec9483f

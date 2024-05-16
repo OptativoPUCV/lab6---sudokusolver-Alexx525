@@ -53,7 +53,7 @@ int is_valid(Node* n)
 
    for (int k = 1; k <= 9; k++)
    {
-      Node* aux = _createNode(k);
+      int* aux = _createNode(k);
       pushBack(l, aux);
    }
    
