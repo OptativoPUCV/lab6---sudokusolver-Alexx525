@@ -49,30 +49,31 @@ void print_node(Node* n)
 
 int is_valid(Node* n)
 {
+   List* l = createList();
    int i, j;
 
    for (i = 0; i < 9; i++)
+   {
       for (j = 0; j < 9; j++)
       {
          if (n->sudo[i][j] != 0)
          {
-            for (int k = 1; k <= 9; k++)
-            {
-               if (k == n->sudo[i][j])
-                  return 0;
-            }
-         }
-
-         if (n->sudo[j][i] != 0)
-         {
-            for (int k = 1; k <= 9; k++)
-            {
-               if (k == n->sudo[j][i])
-                  return 0;
-            }
+            pushBack(l, &n->sudo[i][j]);
          }
       }
-   
+      int* aux = first(l);
+      while (aux != NULL)
+      {
+         int* aux2 = next(l);
+         while (aux2 != NULL)
+         {
+            if (aux == aux2)
+               return 0;
+            aux2 = next(l);
+         }
+         aux = next(l);
+      }
+   }
    return 1;
 }
 
