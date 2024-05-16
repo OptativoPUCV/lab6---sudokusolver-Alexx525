@@ -149,7 +149,7 @@ Node* DFS(Node* initial, int* cont)
 
       while (!is_empty(l))
       {
-         push(s, popFront(l);)
+         push(s, popFront(l))
          
       }
    }
