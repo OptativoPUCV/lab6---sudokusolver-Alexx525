@@ -101,11 +101,11 @@ List* get_adj_nodes(Node* n)
       {
          if (n->sudo[i][j] == 0)
          {
-            Node* adj = copy(n);
             int valor;
 
             for (valor = 1; valor <= 9; valor++)
             {
+               Node* adj = copy(n);
                adj->sudo[i][j] = valor;
                
                pushBack(list, adj);
