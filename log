@@ -148,3 +148,14 @@ sudoku.c:67:13: note: each undeclared identifier is reported only once for each 
 cc1: all warnings being treated as errors
 Compilation failed
 f85f071
+Thu 16 May 2024 08:21:23 PM UTC: 
+ sudoku.c | 22 ++++------------------
+ 1 file changed, 4 insertions(+), 18 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:59:18: error: ‘k’ undeclared (first use in this function)
+   59 |             for (k = 1; k <= 9; k++)
+      |                  ^
+sudoku.c:59:18: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+308497d
