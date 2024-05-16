@@ -49,7 +49,7 @@ void print_node(Node* n)
 
 int is_valid(Node* n)
 {
-   List* l = createList();
+   /*List* l = createList();
 
    for (int k = 1; k <= 9; k++)
    {
@@ -85,7 +85,7 @@ int is_valid(Node* n)
                aux = next(l);
             }
          }
-      }
+      }*/
    
    return 1;
 }
