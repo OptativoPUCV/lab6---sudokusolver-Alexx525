@@ -1,0 +1,19 @@
+Thu 16 May 2024 05:17:08 AM UTC: 
+ sudoku.c | 90 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 82 insertions(+), 8 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:56:19: error: implicit declaration of function ‘_createNode’; did you mean ‘createNode’? [-Werror=implicit-function-declaration]
+   56 |       Node* aux = _createNode(k);
+      |                   ^~~~~~~~~~~
+      |                   createNode
+sudoku.c:56:19: error: initialization of ‘Node *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+sudoku.c:71:24: error: comparison between pointer and integer [-Werror]
+   71 |                if (aux == n->sudo[i][j])
+      |                        ^~
+sudoku.c:83:27: error: comparison between pointer and integer [-Werror]
+   83 |                   if (aux == n->sudo[i][j])
+      |                           ^~
+cc1: all warnings being treated as errors
+Compilation failed
+45c0919
