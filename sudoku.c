@@ -57,9 +57,7 @@ int is_valid(Node* n)
       for (j = 0; j < 9; j++)
       {
          if (n->sudo[i][j] != 0)
-         {
             pushBack(l, &n->sudo[i][j]);
-         }
       }
       int* aux = first(l);
       while (aux != NULL)
@@ -67,7 +65,7 @@ int is_valid(Node* n)
          int* aux2 = next(l);
          while (aux2 != NULL)
          {
-            if (aux == aux2)
+            if (*aux == *aux2)
                return 0;
             aux2 = next(l);
          }
@@ -91,7 +89,7 @@ int is_valid(Node* n)
          int* aux2 = next(l);
          while (aux2 != NULL)
          {
-            if (aux == aux2)
+            if (*aux == *aux2)
                return 0;
             aux2 = next(l);
          }
@@ -118,7 +116,7 @@ int is_valid(Node* n)
          int* aux2 = next(l);
          while (aux2 != NULL)
          {
-            if (aux == aux2)
+            if (*aux == *aux2)
                return 0;
             aux2 = next(l);
          }
