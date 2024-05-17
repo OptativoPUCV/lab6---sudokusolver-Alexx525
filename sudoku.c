@@ -77,28 +77,36 @@ int is_valid(Node* n)
    }
 
    for (i = 0; i < 9; i++)
+   {
+      for (j = 0; j < 9; j++)
       {
-         for (j = 0; j < 9; j++)
+         if (n->sudo[j][i] != 0)
          {
-            if (n->sudo[j][i] != 0)
-            {
-               pushBack(l, &n->sudo[j][i]);
-            }
+            pushBack(l, &n->sudo[j][i]);
          }
-         int* aux = first(l);
-         while (aux != NULL)
-         {
-            int* aux2 = next(l);
-            while (aux2 != NULL)
-            {
-               if (aux == aux2)
-                  return 0;
-               aux2 = next(l);
-            }
-            aux = next(l);
-         }
-         clean(l);
       }
+      int* aux = first(l);
+      while (aux != NULL)
+      {
+         int* aux2 = next(l);
+         while (aux2 != NULL)
+         {
+            if (aux == aux2)
+               return 0;
+            aux2 = next(l);
+         }
+         aux = next(l);
+      }
+      clean(l);
+   }
+   
+   
+   for(int p = 0;p < 9; p++)
+   {
+      int i = 3*(k/3) + (p/3);
+      int j = 3*(k%3) + (p%3);
+   
+   }
    return 1;
 }
 
