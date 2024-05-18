@@ -214,6 +214,8 @@ Node* DFS(Node* initial, int* cont)
          push(s, front(l));
          popFront(l);
       }
+
+      return NULL;
       pushBack(visited, n);
 
       clean(l);
@@ -224,7 +226,7 @@ Node* DFS(Node* initial, int* cont)
 
 
 
-
+/*
 int main( int argc, char *argv[] ){
 
   Node* initial= read_file("s12a.txt");;
@@ -235,4 +237,4 @@ int main( int argc, char *argv[] ){
   print_node(final);
 
   return 0;
-}
+}*/
