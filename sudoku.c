@@ -65,6 +65,7 @@ int verificar(List* l)
          {
             popCurrent(l);
             popCurrent(l_num);
+            prev(l_num);
             break;
          }
          aux = next(l);
