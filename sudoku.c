@@ -64,6 +64,7 @@ int verificar(List* l)
 
          aux = next(l);
       }
+      count = 0;
       aux = first(l);
    }
 
