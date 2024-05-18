@@ -49,16 +49,21 @@ void print_node(Node* n)
 
 int verificar(List* l)
 {
+   List* l_aux = createList();
+   l_aux = l;
+   
    int* aux = first(l);
+   int* aux2 = first(l_aux);
+   aux2 = next(l_aux);
    
    while (aux != NULL)
    {
-      int* aux2 = next(l);
+      
       while (aux2 != NULL)
       {
          if (*aux == *aux2)
             return 0;
-         aux2 = next(l);
+         aux2 = next(l_aux);
       }
       aux = next(l);
    }
