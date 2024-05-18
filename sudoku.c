@@ -208,7 +208,7 @@ Node* DFS(Node* initial, int* cont)
          continue;
       
       List* l = get_adj_nodes(n);
-      Node* aux = first(l);
+      Node* aux = front(l);
 
       while (!is_empty(l))
       {
