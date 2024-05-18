@@ -47,6 +47,25 @@ void print_node(Node* n)
    printf("\n");
 }
 
+int verificar(List* l)
+{
+   int* aux = first(l);
+   
+   while (aux != NULL)
+   {
+      int* aux2 = next(l);
+      while (aux2 != NULL)
+      {
+         if (*aux == *aux2)
+            return 0;
+         aux2 = next(l);
+      }
+      aux = next(l);
+   }
+
+   return 1;
+}
+
 int is_valid(Node* n)
 {
    List* l = createList();
@@ -59,18 +78,9 @@ int is_valid(Node* n)
          if (n->sudo[i][j] != 0)
             pushBack(l, &n->sudo[i][j]);
       }
-      int* aux = first(l);
-      while (aux != NULL)
-      {
-         int* aux2 = next(l);
-         while (aux2 != NULL)
-         {
-            if (*aux == *aux2)
-               return 0;
-            aux2 = next(l);
-         }
-         aux = next(l);
-      }
+      if (verificar(l) == 0)
+         return 0;
+
       clean(l);
    }
 
@@ -83,18 +93,9 @@ int is_valid(Node* n)
             pushBack(l, &n->sudo[j][i]);
          }
       }
-      int* aux = first(l);
-      while (aux != NULL)
-      {
-         int* aux2 = next(l);
-         while (aux2 != NULL)
-         {
-            if (*aux == *aux2)
-               return 0;
-            aux2 = next(l);
-         }
-         aux = next(l);
-      }
+      if (verificar(l) == 0)
+         return 0;
+
       clean(l);
    }
    
@@ -108,18 +109,10 @@ int is_valid(Node* n)
          if (n->sudo[i][j] != 0)
             pushBack(l, &n->sudo[i][j]);
       }
-      int* aux = first(l);
-      while (aux != NULL)
-      {
-         int* aux2 = next(l);
-         while (aux2 != NULL)
-         {
-            if (*aux == *aux2)
-               return 0;
-            aux2 = next(l);
-         }
-         aux = next(l);
-      }
+      
+      if (verificar(l) == 0)
+         return 0;
+
       clean(l);
    }
    return 1;
