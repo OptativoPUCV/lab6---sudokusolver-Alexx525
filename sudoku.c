@@ -68,9 +68,6 @@ int verificar(List* l, Stack* s)
       aux2 = top(s);
    }
 
-   free(aux);
-   free(aux2);
-
    return 1;
 }
 
