@@ -49,31 +49,22 @@ void print_node(Node* n)
 
 int verificar(List* l)
 {
-   List* l_num = createList();
-
-   for (int k = 1; k <= 9; k++)
-      pushBack(l_num, &k);
-
    int* aux = first(l);
-   int* num = first(l_num);
    int count = 0;
 
-   while (aux != NULL)
+   for (int k = 1; k <= 9; k++)
    {
-      while (num != NULL)
+      while (aux != NULL)
       {
-         if (*aux == *num)
-         {
+         if (*aux == k)
             count++;
-         }
 
          if (count >= 2)
             return 0;
 
-         num = next(l_num);
+         aux = next(l);
       }
-      aux = next(l);
-      num = first(l_num);
+      aux = first(l);
    }
 
    return 1;
