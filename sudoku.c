@@ -51,12 +51,16 @@ int verificar(List* l, Stack* s)
 {
    int* aux = first(l);
    int* aux2 = top(s);
+   int contador = 0;
    
    while (!is_empty(s))
    {
       while (aux != NULL)
       {
          if (*aux == *aux2)
+            contador++;
+
+         if (contador >= 2)
             return 0;
          aux = next(l);
       }
