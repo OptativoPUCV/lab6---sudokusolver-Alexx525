@@ -56,8 +56,29 @@ int verificar(List* l)
 
    int* aux = first(l);
    int* num = first(l_num);
+   int count = 0;
 
-   while (num != NULL)
+   while (aux != NULL)
+   {
+      while (num != NULL)
+      {
+         if (*aux == *num)
+         {
+            count++;
+         }
+
+         if (count >= 2)
+            return 0;
+
+         num = next(l_num);
+      }
+      aux = next(l);
+      num = first(l_num);
+   }
+
+   return 1;
+
+   /*while (num != NULL)
    {
       while (aux != NULL)
       {
@@ -77,7 +98,7 @@ int verificar(List* l)
    if (is_empty(l))
       return 1;
 
-   return 0;
+   return 0;*/
 }
 
 int is_valid(Node* n)
