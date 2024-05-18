@@ -64,7 +64,6 @@ int verificar(List* l)
    }
 
    free(aux);
-   free(aux2);
 
    return 1;
 }

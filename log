@@ -231,3 +231,9 @@ sudoku.c:67:9: error: ‘aux2’ undeclared (first use in this function); did yo
 sudoku.c:67:9: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 85149b9
+Sat 18 May 2024 01:38:40 AM UTC: 
+ sudoku.c | 1 -
+ 1 file changed, 1 deletion(-)
+ tests:  5|3
+total_score: 35/70
+6224a9b
