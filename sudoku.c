@@ -86,6 +86,7 @@ int is_valid(Node* n)
       
       if (verificar(l) == 0)
       {
+         clean(l);
          free(l);
          return 0;
       }
@@ -102,6 +103,7 @@ int is_valid(Node* n)
       
       if (verificar(l) == 0)
       {
+         clean(l);
          free(l);
          return 0;
       }
@@ -121,11 +123,13 @@ int is_valid(Node* n)
       
       if (verificar(l) == 0)
       {
+         clean(l);
          free(l);
          return 0;
       }
       clean(l);
    }
+   clean(l);
    free(l);
    
    return 1;
