@@ -182,8 +182,13 @@ int is_visited(List* l, Node* n)
 
    while(aux != NULL)
    {
-      if (aux == n)
-         return 0;
+      for (int i = 0; i < 9; i++)
+         for (int j = 0; j < 9; j++)
+         {
+            if (aux->sudo[i][j] == n->sudo[i][j])
+               return 0;
+         }
+      
       aux = next(l);
    }
    return 1;
