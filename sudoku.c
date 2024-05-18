@@ -70,6 +70,7 @@ int verificar(List* l)
          }
          aux = next(l);
       }
+      aux = first(l);
       num = next(l_num);
    }
 
