@@ -176,28 +176,9 @@ int is_final(Node* n)
    return 1;
 }
 
-int is_visited(List* l, Node* n)
-{
-   Node* aux = first(l);
-
-   while(aux != NULL)
-   {
-      for (int i = 0; i < 9; i++)
-         for (int j = 0; j < 9; j++)
-         {
-            if (aux->sudo[i][j] == n->sudo[i][j])
-               return 0;
-         }
-      
-      aux = next(l);
-   }
-   return 1;
-}
-
 Node* DFS(Node* initial, int* cont)
 {
    Stack* s = createStack();
-   List* visited = createList();
    push(s, initial);
 
    while (!is_empty(s))
@@ -208,9 +189,6 @@ Node* DFS(Node* initial, int* cont)
       
       if (is_final(n))
          return n;
-
-      if (is_visited(visited, n) == 0)
-         continue;
       
       List* l = get_adj_nodes(n);
 
