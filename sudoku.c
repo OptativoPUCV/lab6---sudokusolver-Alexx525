@@ -69,28 +69,6 @@ int verificar(List* l)
    }
 
    return 1;
-
-   /*while (num != NULL)
-   {
-      while (aux != NULL)
-      {
-         if (*aux == *num)
-         {
-            popCurrent(l);
-            popCurrent(l_num);
-            prev(l_num);
-            break;
-         }
-         aux = next(l);
-      }
-      aux = first(l);
-      num = next(l_num);
-   }
-
-   if (is_empty(l))
-      return 1;
-
-   return 0;*/
 }
 
 int is_valid(Node* n)
@@ -103,16 +81,14 @@ int is_valid(Node* n)
       for (j = 0; j < 9; j++)
       {
          if (n->sudo[i][j] != 0)
-         {
             pushBack(l, &n->sudo[i][j]);
-         }
       }
+      
       if (verificar(l) == 0)
       {
          free(l);
          return 0;
       }
-      
       clean(l);
    }
 
@@ -121,16 +97,14 @@ int is_valid(Node* n)
       for (j = 0; j < 9; j++)
       {
          if (n->sudo[j][i] != 0)
-         {
             pushBack(l, &n->sudo[i][j]);
-         }
       }
+      
       if (verificar(l) == 0)
       {
          free(l);
          return 0;
       }
-      
       clean(l);
    }
    
@@ -142,9 +116,7 @@ int is_valid(Node* n)
          int j = 3*(k%3) + (p%3);
 
          if (n->sudo[i][j] != 0)
-         {
             pushBack(l, &n->sudo[i][j]);
-         }
       }
       
       if (verificar(l) == 0)
@@ -152,7 +124,6 @@ int is_valid(Node* n)
          free(l);
          return 0;
       }
-      
       clean(l);
    }
    free(l);
