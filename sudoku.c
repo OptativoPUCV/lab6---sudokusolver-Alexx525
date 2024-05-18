@@ -156,6 +156,7 @@ List* get_adj_nodes(Node* n)
                if (is_valid(adj))
                   pushBack(list, adj);
             }
+            return list;
          }
       }
    return list;
@@ -183,7 +184,7 @@ Node* DFS(Node* initial, int* cont)
 
    while (!is_empty(s))
    {
-      cont++;
+      (*cont)++;
       Node* n = top(s);
       
       pop(s);
@@ -198,6 +199,9 @@ Node* DFS(Node* initial, int* cont)
          push(s, front(l));
          popFront(l);
       }
+
+      clean(l);
+      free(l);
    }
    return NULL;
 }
