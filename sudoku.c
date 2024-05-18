@@ -208,11 +208,10 @@ Node* DFS(Node* initial, int* cont)
          continue;
       
       List* l = get_adj_nodes(n);
-      Node* aux = front(l);
 
       while (!is_empty(l))
       {
-         push(s, aux);
+         push(s, front(l));
          popFront(l);
       }
 
