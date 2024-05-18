@@ -73,7 +73,9 @@ int verificar(List* l)
 
 int is_valid(Node* n)
 {
-   List* l = createList();
+   List* l_fil = createList();
+   List* l_col = createList();
+   List* l_cuad = createList();
    int i, j;
 
    for (i = 0; i < 9; i++)
@@ -81,33 +83,25 @@ int is_valid(Node* n)
       for (j = 0; j < 9; j++)
       {
          if (n->sudo[i][j] != 0)
-            pushBack(l, &n->sudo[i][j]);
+            pushBack(l_fil, &n->sudo[i][j]);
+
+         if (n->sudo[j][i] != 0)
+            pushBack(l_col, &n->sudo[i][j]);
       }
       
-      if (verificar(l) == 0)
+      if (verificar(l_fil) == 0)
       {
-         free(l);
+         free(l_fil);
          return 0;
       }
-      clean(l);
+      
+      if (verificar(l_col) == 0)
+      {
+         free(l_col);
+         return 0;
+      }
    }
 
-   for (i = 0; i < 9; i++)
-   {
-      for (j = 0; j < 9; j++)
-      {
-         if (n->sudo[j][i] != 0)
-            pushBack(l, &n->sudo[i][j]);
-      }
-      
-      if (verificar(l) == 0)
-      {
-         free(l);
-         return 0;
-      }
-      clean(l);
-   }
-   
    for (int k = 0; k < 9; k++)
    {
       for (int p = 0; p < 9; p++)
@@ -116,17 +110,19 @@ int is_valid(Node* n)
          int j = 3*(k%3) + (p%3);
 
          if (n->sudo[i][j] != 0)
-            pushBack(l, &n->sudo[i][j]);
+            pushBack(l_cuad, &n->sudo[i][j]);
       }
       
-      if (verificar(l) == 0)
+      if (verificar(l_cuad) == 0)
       {
-         free(l);
+         free(l_cuad);
          return 0;
       }
-      clean(l);
    }
-   free(l);
+   
+   free(l_fil);
+   free(l_col);
+   free(l_cuad);
    
    return 1;
 }
@@ -148,8 +144,9 @@ List* get_adj_nodes(Node* n)
             {
                Node* adj = copy(n);
                adj->sudo[i][j] = valor;
-               
-               pushBack(list, adj);
+
+               if (is_valid(adj) == 1)
+                  pushBack(list, adj);
             }
          }
       }
