@@ -179,7 +179,7 @@ int is_final(Node* n)
 Node* DFS(Node* initial, int* cont)
 {
    Stack* s = createStack();
-   List* l = createList();
+   //List* visited = createList();
    push(s, initial);
 
    while (!is_empty(s))
@@ -190,8 +190,11 @@ Node* DFS(Node* initial, int* cont)
       
       if (is_final(n))
          return n;
+
+      /*if (is_visited(visited, n) == 0)
+         continue;*/
       
-      l = get_adj_nodes(n);
+      List* l = get_adj_nodes(n);
 
       while (!is_empty(l))
       {
