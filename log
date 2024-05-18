@@ -463,3 +463,9 @@ sudoku.c:201:16: error: ‘visited’ undeclared (first use in this function)
 sudoku.c:201:16: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 8f91df4
+Sat 18 May 2024 11:38:03 PM UTC: 
+ sudoku.c | 2 --
+ 1 file changed, 2 deletions(-)
+ tests:  8|1
+total_score: 60/70
+204198a

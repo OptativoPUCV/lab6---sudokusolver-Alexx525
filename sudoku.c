@@ -197,8 +197,6 @@ Node* DFS(Node* initial, int* cont)
          push(s, front(l));
          popFront(l);
       }
-      
-      pushBack(visited, n);
 
       clean(l);
       free(l);
