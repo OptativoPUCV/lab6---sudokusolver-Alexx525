@@ -50,10 +50,12 @@ void print_node(Node* n)
 int verificar(List* l)
 {
    int* aux = first(l);
-   int count = 0;
 
    for (int k = 1; k <= 9; k++)
    {
+      int count = 0;
+      aux = first(l);
+      
       while (aux != NULL)
       {
          if (*aux == k)
@@ -64,8 +66,6 @@ int verificar(List* l)
 
          aux = next(l);
       }
-      count = 0;
-      aux = first(l);
    }
 
    return 1;
@@ -73,9 +73,7 @@ int verificar(List* l)
 
 int is_valid(Node* n)
 {
-   List* l_fil = createList();
-   List* l_col = createList();
-   List* l_cuad = createList();
+   List* l = createList();
    int i, j;
 
    for (i = 0; i < 9; i++)
@@ -83,25 +81,33 @@ int is_valid(Node* n)
       for (j = 0; j < 9; j++)
       {
          if (n->sudo[i][j] != 0)
-            pushBack(l_fil, &n->sudo[i][j]);
-
-         if (n->sudo[j][i] != 0)
-            pushBack(l_col, &n->sudo[i][j]);
+            pushBack(l, &n->sudo[i][j]);
       }
       
-      if (verificar(l_fil) == 0)
+      if (verificar(l) == 0)
       {
-         free(l_fil);
+         free(l);
          return 0;
       }
-      
-      if (verificar(l_col) == 0)
-      {
-         free(l_col);
-         return 0;
-      }
+      clean(l);
    }
 
+   for (i = 0; i < 9; i++)
+   {
+      for (j = 0; j < 9; j++)
+      {
+         if (n->sudo[j][i] != 0)
+            pushBack(l, &n->sudo[i][j]);
+      }
+      
+      if (verificar(l) == 0)
+      {
+         free(l);
+         return 0;
+      }
+      clean(l);
+   }
+   
    for (int k = 0; k < 9; k++)
    {
       for (int p = 0; p < 9; p++)
@@ -110,19 +116,17 @@ int is_valid(Node* n)
          int j = 3*(k%3) + (p%3);
 
          if (n->sudo[i][j] != 0)
-            pushBack(l_cuad, &n->sudo[i][j]);
+            pushBack(l, &n->sudo[i][j]);
       }
       
-      if (verificar(l_cuad) == 0)
+      if (verificar(l) == 0)
       {
-         free(l_cuad);
+         free(l);
          return 0;
       }
+      clean(l);
    }
-   
-   free(l_fil);
-   free(l_col);
-   free(l_cuad);
+   free(l);
    
    return 1;
 }
@@ -145,8 +149,7 @@ List* get_adj_nodes(Node* n)
                Node* adj = copy(n);
                adj->sudo[i][j] = valor;
 
-               if (is_valid(adj) == 1)
-                  pushBack(list, adj);
+               pushBack(list, adj);
             }
          }
       }
