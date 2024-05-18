@@ -63,6 +63,9 @@ int verificar(List* l)
       aux = next(l);
    }
 
+   free(aux);
+   free(aux2);
+
    return 1;
 }
 
@@ -79,7 +82,10 @@ int is_valid(Node* n)
             pushBack(l, &n->sudo[i][j]);
       }
       if (verificar(l) == 0)
+      {
+         free(l);
          return 0;
+      }
 
       clean(l);
    }
@@ -94,7 +100,10 @@ int is_valid(Node* n)
          }
       }
       if (verificar(l) == 0)
+      {
+         free(l);
          return 0;
+      }
 
       clean(l);
    }
@@ -111,10 +120,15 @@ int is_valid(Node* n)
       }
       
       if (verificar(l) == 0)
+      {
+         free(l);
          return 0;
+      }
 
       clean(l);
    }
+   free(l);
+   
    return 1;
 }
 
