@@ -47,28 +47,25 @@ void print_node(Node* n)
    printf("\n");
 }
 
-int verificar(List* l)
+int verificar(List* l, Stack* s)
 {
-   List* l_aux = createList();
-   l_aux = l;
-   
    int* aux = first(l);
-   int* aux2 = first(l_aux);
-   aux2 = next(l_aux);
+   int* aux2 = top(s);
    
-   while (aux != NULL)
+   while (!is_empty(s))
    {
-      
-      while (aux2 != NULL)
+      while (aux != NULL)
       {
          if (*aux == *aux2)
             return 0;
-         aux2 = next(l_aux);
+         aux = next(l);
       }
-      aux = next(l);
+      pop(s);
+      aux2 = top(s);
    }
 
    free(aux);
+   free(aux2);
 
    return 1;
 }
@@ -76,6 +73,7 @@ int verificar(List* l)
 int is_valid(Node* n)
 {
    List* l = createList();
+   Stack* s = createStack();
    int i, j;
 
    for (i = 0; i < 9; i++)
@@ -83,14 +81,18 @@ int is_valid(Node* n)
       for (j = 0; j < 9; j++)
       {
          if (n->sudo[i][j] != 0)
+         {
             pushBack(l, &n->sudo[i][j]);
+            push(s, &n->sudo[i][j]);
+         }
       }
-      if (verificar(l) == 0)
+      if (verificar(l, s) == 0)
       {
+         free(s);
          free(l);
          return 0;
       }
-
+      clean(s);
       clean(l);
    }
 
@@ -100,15 +102,17 @@ int is_valid(Node* n)
       {
          if (n->sudo[j][i] != 0)
          {
-            pushBack(l, &n->sudo[j][i]);
+            pushBack(l, &n->sudo[i][j]);
+            push(s, &n->sudo[i][j]);
          }
       }
-      if (verificar(l) == 0)
+      if (verificar(l, s) == 0)
       {
+         free(s);
          free(l);
          return 0;
       }
-
+      clean(s);
       clean(l);
    }
    
@@ -120,17 +124,22 @@ int is_valid(Node* n)
          int j = 3*(k%3) + (p%3);
 
          if (n->sudo[i][j] != 0)
+         {
             pushBack(l, &n->sudo[i][j]);
+            push(s, &n->sudo[i][j]);
+         }
       }
       
-      if (verificar(l) == 0)
+      if (verificar(l, s) == 0)
       {
+         free(s);
          free(l);
          return 0;
       }
-
+      clean(s);
       clean(l);
    }
+   free(s);
    free(l);
    
    return 1;
